@@ -1,0 +1,43 @@
+body {
+    background-image: url("../static/Login_Fondo.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    font-family: "Arial", sans-serif;
+    font-size: 18px;
+}
+
+.login-box {
+    background: white;
+    padding: 20px;
+    text-align: center;
+    width: 600px;
+    height: 425px;
+    border-radius: 10px;
+}
+
+.login-box input {
+    margin: 10px 10px 25px 10px;
+    width: 50%;
+    background-color: transparent;
+    border-width: 0px 0px 2px 0px;
+    border-color: #1F58A1;
+    outline: none;
+    font-family: "Arial", sans-serif;
+    font-size: 21px;
+}
+
+.login-box button {
+    background: #1F58A1;
+    color: white;
+    border: none;
+    padding: 10px;
+    width: 30%;
+    border-radius: 5px;
+    margin-bottom: 50px;
+    margin-top: 20px;
+}
