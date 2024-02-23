@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <link href="/Pagina_Alumno.css" rel="stylesheet">
+    <link href="../static/Pagina_Alumno.css" rel="stylesheet">
 </head>
 <body>
 <label class="label">Bienvenido a Alumno</label>
@@ -43,6 +43,28 @@
             <div class="input-container">
                 <label class="textolabel">Total horas restantes:</label>
                 <input class="input" th:value="700 - ${ alumno.horasdual}" type="number">
+            </div>
+        </div>
+    </div>
+
+    <div class="empresa">
+        <h2>Datos Empresa</h2>
+        <div class="infoempresa">
+            <div class="input-container">
+                <label class="textolabel">Nombre:</label>
+                <input class="input" type="text">
+            </div>
+            <div class="input-container">
+                <label class="textolabel">Responsable:</label>
+                <input class="input"  type="text">
+            </div>
+            <div class="input-container">
+                <label class="textolabel">Email:</label>
+                <input class="input"  type="email">
+            </div>
+            <div class="input-container">
+                <label class="textolabel">Teléfono:</label>
+                <input class="input" type="text">
             </div>
         </div>
     </div>
