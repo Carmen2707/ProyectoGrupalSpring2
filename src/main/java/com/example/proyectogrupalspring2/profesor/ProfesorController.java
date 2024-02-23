@@ -1,7 +1,5 @@
-package com.example.proyectogrupalspring.profesor;
+package com.example.proyectogrupalspring2.profesor;
 
-import com.example.proyectogrupalspring.actividad.ActividadRepository;
-import com.example.proyectogrupalspring.alumno.Alumno;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,12 +17,12 @@ public class ProfesorController {
 
     @GetMapping("")
     public String home(Model model) {
-        model.addAttribute("alumnos",profesorRepository.findAll());
+        model.addAttribute("alumnos", profesorRepository.findAll());
         return "home";
     }
 
     @GetMapping("/{id}")
-    public List<Object> listaAlumnos(@PathVariable Long id){
-       return profesorRepository.getAlumnosByIdprofesor(id);
+    public List<Object> listaAlumnos(@PathVariable Long id) {
+        return profesorRepository.getAlumnosByIdprofesor(id);
     }
 }

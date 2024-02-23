@@ -1,4 +1,4 @@
-package com.example.proyectogrupalspring.empresa;
+package com.example.proyectogrupalspring2.empresa;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

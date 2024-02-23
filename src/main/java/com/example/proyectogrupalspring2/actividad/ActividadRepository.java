@@ -1,6 +1,7 @@
-package com.example.proyectogrupalspring.actividad;
+package com.example.proyectogrupalspring2.actividad;
 
-import com.example.proyectogrupalspring.alumno.Alumno;
+
+import com.example.proyectogrupalspring2.alumno.Alumno;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;

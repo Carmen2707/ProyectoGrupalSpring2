@@ -2,19 +2,21 @@
 <html lang="es">
 <meta charset="UTF-8">
 <head>
-    <link rel="stylesheet" href="../templates/logincss.css">
+    <link href="/logincss.css" rel="stylesheet">
+
 </head>
 <body>
 <div class="login-box">
-   <!-- <img style="width: 20%" src="../Imagenes/logo-CESUR.png" alt="Cesur logo">-->
+     <img style="width: 20%" src="logo-CESUR.png" alt="Cesur logo">
     <h2>Bienvenido a Cesur</h2>
-   <form action="/alumCorrect" method="get">
-    <input th:value="${alumno.email}" name = "email" type="email" placeholder="Introduzca su correo" ><br>
-    <input th:value="${alumno.contrasenya}" name = "contrasenya" type="password" placeholder="Introduzca la contraseña"><br>
-       <button type="submit">Iniciar sesión</button><br><br>
+    <form action="/alumCorrect" method="get">
+        <input name="email" placeholder="Introduzca su correo"  type="email"><br>
+        <input name="contrasenya" placeholder="Introduzca la contraseña"  type="password"><br>
+        <button type="submit">Iniciar sesión</button>
+        <br><br>
 
     </form>
-    <a href="#" class="olvidar-contraseña">¿Has olvidado tu contraseña?</a>
+    <a class="olvidar-contraseña" href="#">¿Has olvidado tu contraseña?</a>
 </div>
 </body>
 </html>

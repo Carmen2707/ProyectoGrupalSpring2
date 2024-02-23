@@ -1,7 +1,7 @@
-package com.example.proyectogrupalspring.actividad;
+package com.example.proyectogrupalspring2.actividad;
 
 
-import com.example.proyectogrupalspring.alumno.Alumno;
+import com.example.proyectogrupalspring2.alumno.Alumno;
 import jakarta.persistence.*;
 import lombok.Data;
 

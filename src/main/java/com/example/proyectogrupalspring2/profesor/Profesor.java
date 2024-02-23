@@ -1,6 +1,7 @@
-package com.example.proyectogrupalspring.profesor;
+package com.example.proyectogrupalspring2.profesor;
 
-import com.example.proyectogrupalspring.alumno.Alumno;
+
+import com.example.proyectogrupalspring2.alumno.Alumno;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Data;

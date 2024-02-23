@@ -1,7 +1,7 @@
-package com.example.proyectogrupalspring.empresa;
+package com.example.proyectogrupalspring2.empresa;
 
-import com.example.proyectogrupalspring.SecurityService;
-import com.example.proyectogrupalspring.actividad.ActividadRepository;
+
+import com.example.proyectogrupalspring2.SecurityService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -15,6 +15,7 @@ public class EmpresaController {
 
     @Autowired
     private SecurityService security;
+
     @PostMapping("/post")
     public ResponseEntity<Empresa> registrarEmpresa(@RequestBody Empresa empresa, @RequestParam String token) {
         if (security.validateToken(token)) {
