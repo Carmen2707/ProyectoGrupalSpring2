@@ -1,6 +1,7 @@
 package com.example.proyectogrupalspring2;
 
 
+import com.example.proyectogrupalspring2.actividad.Actividad;
 import com.example.proyectogrupalspring2.actividad.ActividadRepository;
 import com.example.proyectogrupalspring2.alumno.Alumno;
 import com.example.proyectogrupalspring2.alumno.AlumnoRepository;
@@ -10,6 +11,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @Controller
 @RequestMapping("/")
@@ -60,6 +63,22 @@ public class WebController {
         }
     }
 
+    //TODO - GET PARA MOSTRAR LAS ACTIVIDADES
+    @GetMapping("/actividades")
+    public String mostrarActividades(Model model, HttpServletRequest request) {
+        HttpSession session = request.getSession();
+        Alumno alumnoSession = (Alumno) session.getAttribute("alumno");
+
+        if (alumnoSession != null) {
+            Alumno alumno = alumnoSession;
+            List<Actividad> actividades = actividadRepository.getAllByIdAlumno(alumno);
+            model.addAttribute("alumno", alumno);
+            model.addAttribute("actividades", actividades);
+            return "Pagina_Alumno";
+        } else {
+            return "redirect:/login";
+        }
+    }
 
 
 

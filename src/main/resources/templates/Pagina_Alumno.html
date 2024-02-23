@@ -24,7 +24,7 @@
             </div>
             <div class="input-container">
                 <label class="textolabel">Empresa:</label>
-                <input class="input" th:value="${alumno.empresa}" type="text">
+                <input class="input" th:value="${alumno.empresa.getNombre()}" type="text">
             </div>
         </div>
         <div class="derecha">
@@ -34,7 +34,7 @@
             </div>
             <div class="input-container">
                 <label class="textolabel">Profesor asignado:</label>
-                <input class="input" th:value="${alumno.tutor}" type="text">
+                <input class="input" th:value="${alumno.tutor.getNombre()}" type="text">
             </div>
             <div class="input-container">
                 <label class="textolabel">Total horas realizadas:</label>
@@ -55,6 +55,14 @@
             <th>Horas de el día</th>
             <th>Actividades realizada</th>
             <th>Observaciones</th>
+        </tr>
+        <!-- Iterar sobre la lista de actividades y mostrar cada una en una fila de la tabla -->
+        <tr th:each="actividad : ${actividades}">
+            <td th:text="${actividad.fecha}">Fecha de la actividad</td>
+            <td th:text="${actividad.tipo}">Tipo de práctica</td>
+            <td th:text="${actividad.horas}">Horas de la actividad</td>
+            <td th:text="${actividad.actividad}">Descripción de la actividad</td>
+            <td th:text="${actividad.observacion}">Observaciones</td>
         </tr>
     </table>
 </div>

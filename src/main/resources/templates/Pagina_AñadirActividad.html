@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+</head>
+<body>
+<h2>Añadir Actividad</h2>
+<form action="/guardar_actividad" method="post">
+    <table>
+        <tr>
+            <td>Fecha:</td>
+            <td><input type="date" name="fecha"></td>
+        </tr>
+        <tr>
+            <td>Tipo:</td>
+            <td><input type="text" name="tipo"></td>
+        </tr>
+        <tr>
+            <td>Horas:</td>
+            <td><input type="number" name="horas"></td>
+        </tr>
+        <tr>
+            <td>Actividad:</td>
+            <td><input type="text" name="actividad"></td>
+        </tr>
+        <tr>
+            <td>Observación:</td>
+            <td><textarea name="observacion" rows="4" cols="50"></textarea></td>
+        </tr>
+    </table>
+    <input type="submit" value="Añadir">
+</form>
+</div>
+
+</body>
+</html>

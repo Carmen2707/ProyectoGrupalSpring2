@@ -120,6 +120,17 @@ body {
     color: white;
 }
 
+.buttonIS:hover {
+    padding: 15px 25px 15px 25px;
+    border: none;
+    font-size: 18px;
+    font-family: "Arial", sans-serif;
+    background-color: white;
+    border-radius: 15px;
+    margin-bottom: 10px;
+    color: #1F58A1;
+}
+
 .buttonCS {
     padding: 15px 25px 15px 25px;
     border: none;
@@ -144,7 +155,6 @@ table {
     width: 100%;
     margin-top: 20px;
     background-color: white;
-
 }
 
 th, td {
