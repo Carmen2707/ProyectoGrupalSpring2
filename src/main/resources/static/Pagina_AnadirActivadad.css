@@ -104,7 +104,7 @@ select {
     border-radius: 8px;
     box-sizing: border-box;
 }
-input[type="text"]#actividad{
+#actividad{
 /*input[type="text"]#observacion*/
     width: 800px; /* Ajusta el ancho al 95% del contenedor padre */
     padding: 40px; /* Aumenta el relleno para hacer los campos más grandes */
@@ -116,9 +116,9 @@ input[type="text"]#actividad{
     justify-content: center;
     align-content: center;
 }
-input[type="text"]#observacion{
+#observacion{
     width: 100%; /* Ajusta el ancho al 95% del contenedor padre */
-    padding: 40px; /* Aumenta el relleno para hacer los campos más grandes */
+    padding: 20px; /* Aumenta el relleno para hacer los campos más grandes */
     font-size: 20px; /* Ajusta el tamaño de la fuente */
     margin-bottom: 30px; /* Agrega margen inferior para separar los campos */
     border: 1px solid #ccc;
