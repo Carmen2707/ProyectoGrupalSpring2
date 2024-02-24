@@ -3,9 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <link href="/Pagina_Alumno.css" rel="stylesheet">
+    <title class="label" th:text=" 'Bienvenid@ ' + ${alumno.nombre}" ></title>
 </head>
 <body>
-<label class="label">Bienvenido a Alumno</label>
+<h1 class="label" th:text=" 'Bienvenid@ ' + ${alumno.nombre}" ></h1>
 <div class="header">
     <div class="datos_personales">
         <h2 class="titulo">Datos Personales</h2>
@@ -52,19 +53,19 @@
         <div class="infoempresa">
             <div class="input-container">
                 <label class="textolabel">Nombre:</label>
-                <input class="input" type="text">
+                <input class="input" th:value="${alumno.empresa.nombre}" type="text">
             </div>
             <div class="input-container">
                 <label class="textolabel">Responsable:</label>
-                <input class="input"  type="text">
+                <input class="input" th:value="${alumno.empresa.responsable}" type="text">
             </div>
             <div class="input-container">
                 <label class="textolabel">Email:</label>
-                <input class="input"  type="email">
+                <input class="input" th:value="${alumno.empresa.email}" type="email">
             </div>
             <div class="input-container">
                 <label class="textolabel">Teléfono:</label>
-                <input class="input" type="text">
+                <input class="input" th:value="${alumno.empresa.telefono}" type="text">
             </div>
         </div>
     </div>
@@ -89,12 +90,14 @@
     </table>
 </div>
 <div class="footer">
-    <form action="" method="get">
+    <form action="/nuevaAct" method="get">
         <button class="buttonIS" type="submit">Añadir</button>
     </form>
-    <form action="/login/logout" method="get">
+    <form action="/logout" method="get">
         <button class="buttonCS" type="submit">Cerrar Sesión</button>
     </form>
+
+
 </div>
 </body>
 </html>
