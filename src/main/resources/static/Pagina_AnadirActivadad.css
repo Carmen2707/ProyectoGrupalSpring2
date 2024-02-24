@@ -1,0 +1,129 @@
+body {
+    background-image: url("Login_Fondo.png");
+    background-size: cover; /* Ajusta la imagen de fondo para que cubra toda la pantalla */
+    background-position: center; /* Centra la imagen de fondo */
+    display: flex;
+    justify-content: center; /* Centra horizontalmente */
+    align-items: center; /* Centra verticalmente */
+    height: 100vh;
+    margin: 0; /* Elimina el margen predeterminado del cuerpo */
+    font-family: "Arial", sans-serif;
+}
+
+.contenedor {
+    width: 100%; /* Ancho máximo del formulario */
+    margin: auto; /* Centra el formulario horizontalmente */
+    padding: 100px;
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    justify-content: center; /* Centra horizontalmente los elementos dentro del contenedor */
+    align-content: center;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+form {
+    display: flex;
+    flex-wrap: wrap; /* Permite que los elementos se envuelvan en múltiples líneas */
+    justify-content: center; /* Centra horizontalmente los elementos dentro del contenedor */
+}
+
+.form-group {
+    margin-bottom: 10px;
+    flex-basis: 100%; /* Establece el ancho máximo a 100% */
+}
+
+.form-group.columna1 {
+    flex-basis: calc(50% - 12px); /* Establece el ancho de la columna 1 */
+    margin-right: 10px; /* Espacio entre columnas */
+}
+
+.form-group.columna2 {
+    flex-basis: calc(50% - 10px); /* Establece el ancho de la columna 2 */
+    margin-right: 10px; /* Espacio entre columnas */
+}
+
+.label-group {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 18px; /* Tamaño de fuente aumentado */
+}
+
+
+/* CSS para los botones */
+.boton-container {
+    width: 100%; /* Ajusta el ancho al 100% del contenedor padre */
+    text-align: center; /* Centra el botón horizontalmente */
+    justify-content: center;
+}
+
+
+/* Estilo para los botones */
+input[type="submit"] {
+    padding: 10px;
+    width: 100%;
+    border-radius: 5px;
+    margin-bottom: 50px;
+    margin-top: 20px;
+    background-color: #4CAF50;
+    color: white;
+}
+
+/* Estilo para el segundo botón */
+#botonCancelar {
+    margin-left: 10px; /* Añade un poco de margen entre los botones */
+    width: 100px; /* Ajusta el ancho del botón al 50% */
+    background-color: red;
+    color: white;
+    border-radius: 5px;
+    margin-bottom: 50px;
+    margin-top: 20px;
+}
+#botonCancelar:hover{
+    background-color: #cc3434;
+}
+
+
+input[type="submit"]:hover {
+    background-color: #45a049;
+}
+
+input[type="number"],
+input[type="date"],
+select {
+    width: 100%; /* Ajusta el ancho al 90% del contenedor padre */
+    padding: 20px; /* Aumenta el relleno para hacer los campos más grandes */
+    font-size: 20px; /* Ajusta el tamaño de la fuente */
+    margin-bottom: 20px; /* Agrega margen inferior para separar los campos */
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-sizing: border-box;
+}
+input[type="text"]#actividad{
+/*input[type="text"]#observacion*/
+    width: 800px; /* Ajusta el ancho al 95% del contenedor padre */
+    padding: 40px; /* Aumenta el relleno para hacer los campos más grandes */
+    font-size: 20px; /* Ajusta el tamaño de la fuente */
+    margin-bottom: 30px; /* Agrega margen inferior para separar los campos */
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-sizing: border-box;
+    justify-content: center;
+    align-content: center;
+}
+input[type="text"]#observacion{
+    width: 100%; /* Ajusta el ancho al 95% del contenedor padre */
+    padding: 40px; /* Aumenta el relleno para hacer los campos más grandes */
+    font-size: 20px; /* Ajusta el tamaño de la fuente */
+    margin-bottom: 30px; /* Agrega margen inferior para separar los campos */
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-sizing: border-box;
+    justify-content: center;
+    align-content: center;
+}

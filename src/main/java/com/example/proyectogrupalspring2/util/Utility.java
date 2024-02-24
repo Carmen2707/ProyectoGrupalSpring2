@@ -10,7 +10,6 @@ public class Utility {
                 Runtime.getRuntime().exec("cmd /c start chrome http://localhost:8080/login");
             }else{
                 Runtime.getRuntime().exec("cmd -a start Safari http://localhost:8080/login");
-
             }
         } catch (IOException e) {
             throw new RuntimeException(e);
