@@ -62,14 +62,15 @@ body {
     display: flex;
     align-items: center;
     justify-content: right;
+    margin-right: 56px;
 
 }
 
 .input {
     outline: none;
     font-family: "Arial", sans-serif;
-    font-size: 21px;
-    width: 300px;
+    font-size: 19px;
+    width: 256px;
     display: inline-block;
 }
 
@@ -87,9 +88,9 @@ body {
     width: 600px;
 }
 
-.h2 {
+.titulo {
     font-family: "Arial", sans-serif;
-    font-size: 24px;
+    font-size: 20px;
     color: white;
 }
 
