@@ -14,6 +14,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 @Controller
@@ -90,29 +93,42 @@ public class WebController {
 
     //POST PARA AÑADIR ACTIVIDAD
     @PostMapping("/nuevaact")
-    public String nuevaActividad(@ModelAttribute Actividad actividad, HttpServletRequest request, Model model){
+    public String nuevaActividad(@ModelAttribute Actividad actividad, HttpServletRequest request, Model model) {
         HttpSession session = request.getSession();
-        Alumno alumnoSession= (Alumno) session.getAttribute("alumno");
-        System.out.println(actividad);
+        Alumno alumnoSession = (Alumno) session.getAttribute("alumno");
 
-        if(alumnoSession!=null&&(!(actividad.getActividad().equals(""))&&!(actividad.getFecha().equals("")))&&actividad.getTipo()!=null&&actividad.getHoras()!=null){
-            System.out.println(actividad);
-            actividad.setAlumno(alumnoSession);
-            actividadRepository.save(actividad);
-            return "redirect:/"+Long.valueOf(actividad.getActividad());
-        }else if(alumnoSession==null){
+        if (alumnoSession != null) {
+            if (actividad.getFecha() != null && actividad.getActividad() != null && !actividad.getActividad().isEmpty() && actividad.getTipo() != null && actividad.getHoras() != null) {
+                actividad.setAlumno(alumnoSession);
+                actividadRepository.save(actividad);
+                System.out.println(actividad);
+                return "irAlum/" + Long.valueOf(alumnoSession.getIdalumno());
+            } else {
+                // Si falta algún campo requerido, redirige a la página de creación de actividad
+                return "redirect:/nuevaact";
+            }
+        } else {
             model.addAttribute("alumno", new Alumno());
             return "/login";
-        }else if (actividad.getActividad().equals("")||actividad.getFecha().equals("")||actividad.getTipo()==null||actividad.getHoras()==null){
-            return "redirect:/nuevaact";
-        }else {
-            return"";
         }
     }
+    @GetMapping("/irAña/{id}")
+    public String irPaginaAñadirActividad(@PathVariable Long id, Model model, HttpServletRequest request) {
+        HttpSession session = request.getSession();
+        Alumno alumnoSession = (Alumno) session.getAttribute("alumno");
 
+        if(alumnoSession != null){
+            Alumno alumno = alumnoSession;
+            model.addAttribute("alumno", alumno);
+
+            return "Pagina_AñadirActividad";
+        } else {
+            return "login"; // Agrega el objeto alumno al modelo para renderizar la vista de login
+        }
+    }
     //GET PARA AÑADIR ACTIVIDAD
     @GetMapping("/nuevaact")
-    public String nuevaActividad(Model model, HttpServletRequest request){
+    public String nuevaActividad( Model model, HttpServletRequest request){
         Actividad actividad = new Actividad();
 
         HttpSession session = request.getSession();
@@ -120,10 +136,10 @@ public class WebController {
         if(alumnoSession!=null){
             actividad.setAlumno(alumnoSession);
             model.addAttribute("actividad", actividad);
-            return ""; //agregar aqui el editaractividad
+            return "Pagina_AnadirActividad"; //agregar aqui el editaractividad
         }else{
             model.addAttribute("alumno", new Alumno());
-            return "/login";
+            return "login";
         }
     }
 

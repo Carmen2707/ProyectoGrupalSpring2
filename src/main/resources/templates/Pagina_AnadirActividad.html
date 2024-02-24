@@ -2,14 +2,14 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link href="../static/Pagina_AnadirActivadad.css" rel="stylesheet">
+    <link href="/Pagina_AnadirActivadad.css" rel="stylesheet">
 </head>
 <body>
 
 <div class="contenedor">
     <h1>Añadir Actividad</h1>
 
-    <form action="/guardar_actividad" method="post">
+    <form action="/nuevaact" method="post">
         <div class="form-group columna1">
             <label class="label-group" for="fecha">Fecha:</label>
             <input type="date" id="fecha" name="fecha" required>
@@ -33,8 +33,9 @@
             <label class="label-group" for="observacion">Observación:</label>
             <textarea rows ="4" cols="30" id="observacion"placeholder="Añade aquí tus observaciones"></textarea>
         </div>
+
         <div class="botones-container">
-            <input type="submit" value="Añadir Actividad">
+            <input type="submit" value="Añadir Actividad" th>
             <input id="botonCancelar" type="submit" value="Cancelar">
         </div>
     </form>
