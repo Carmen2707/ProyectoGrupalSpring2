@@ -8,6 +8,8 @@ import com.example.proyectogrupalspring2.alumno.AlumnoRepository;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -19,8 +21,14 @@ import java.util.List;
 public class WebController {
     @Autowired //inicializar los componentes de sprint de forma automatica
     private AlumnoRepository alumnoRepository;
+
     @Autowired //inicializar los componentes de sprint de forma automatica
     private ActividadRepository actividadRepository;
+
+    @Autowired //inicializar los componentes de sprint de forma automatica
+    private SecurityService securityService;
+
+
 
     @GetMapping("/login")
     public String getLogin(Model model) {
@@ -80,6 +88,50 @@ public class WebController {
         }
     }
 
+    //POST PARA AÑADIR ACTIVIDAD
+    @PostMapping("/nuevaact")
+    public String nuevaActividad(@ModelAttribute Actividad actividad, HttpServletRequest request, Model model){
+        HttpSession session = request.getSession();
+        Alumno alumnoSession= (Alumno) session.getAttribute("alumno");
+        System.out.println(actividad);
+
+        if(alumnoSession!=null&&(!(actividad.getActividad().equals(""))&&!(actividad.getFecha().equals("")))&&actividad.getTipo()!=null&&actividad.getHoras()!=null){
+            System.out.println(actividad);
+            actividad.setAlumno(alumnoSession);
+            actividadRepository.save(actividad);
+            return "redirect:/"+Long.valueOf(actividad.getActividad());
+        }else if(alumnoSession==null){
+            model.addAttribute("alumno", new Alumno());
+            return "/login";
+        }else if (actividad.getActividad().equals("")||actividad.getFecha().equals("")||actividad.getTipo()==null||actividad.getHoras()==null){
+            return "redirect:/nuevaact";
+        }else {
+            return"";
+        }
+    }
+
+    //GET PARA AÑADIR ACTIVIDAD
+    @GetMapping("/nuevaact")
+    public String nuevaActividad(Model model, HttpServletRequest request){
+        Actividad actividad = new Actividad();
+
+        HttpSession session = request.getSession();
+        Alumno alumnoSession = (Alumno) session.getAttribute("alumno");
+        if(alumnoSession!=null){
+            actividad.setAlumno(alumnoSession);
+            model.addAttribute("actividad", actividad);
+            return ""; //agregar aqui el editaractividad
+        }else{
+            model.addAttribute("alumno", new Alumno());
+            return "/login";
+        }
+    }
+
+
+
+    //TODO - PUT PARA EDITAR ACTIVIDAD
+
+    //TODO - DELETE PARA EDITAR ACTIVIDAD
 
 
     @GetMapping("/logout")
