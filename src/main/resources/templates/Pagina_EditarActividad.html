@@ -2,40 +2,41 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link href="/Pagina_AnadirActivadad.css" rel="stylesheet">
+    <link href="/Pagina_EditarActividad.css" rel="stylesheet">
 </head>
 <body>
 
 <div class="contenedor">
-    <h1>Añadir Actividad</h1>
+    <h1>Editar Actividad</h1>
 
-    <form action="/nuevaact" method="post">
+    <form action="/nuevaact" method="get">
         <div class="form-group columna1">
             <label class="label-group" for="fecha">Fecha:</label>
-            <input type="date" id="fecha" name="fecha" required>
+            <input type="date" th:value="${actividad.fecha}" id="fecha" name="fecha" required>
         </div>
         <div class="form-group columna1">
             <label class="label-group" for="horas">Horas Realizadas:</label>
-            <input type="number" id="horas" name="horas" min="1" max="8" required>
+            <input type="number" th:value="${actividad.horas}" id="horas" name="horas" min="1" max="8" required>
         </div>
         <div class="form-group columna1">
             <label class="label-group" for="tipo">Tipo de Práctica:</label>
-            <select id="tipo" name="tipo" required>
+            <select id="tipo" th:value="${actividad.tipo}"name="tipo" required>
                 <option value="DUAL">DUAL</option>
                 <option value="FCT">FCT</option>
             </select>
         </div>
         <div class="form-group columna2">
             <label class="label-group" for="actividad">Actividad realizada:</label>
-            <textarea rows ="4" cols="30" id="actividad" placeholder="Añadir aquí sus actividad realizada"></textarea>
+            <textarea rows ="4" cols="30" id="actividad" placeholder="Añadir aquí sus actividad realizada" th:value="${actividad.actividad}"></textarea>
         </div>
         <div class="form-group columna4">
             <label class="label-group" for="observacion">Observación:</label>
-            <textarea rows ="4" cols="30" id="observacion"placeholder="Añade aquí tus observaciones"></textarea>
+            <textarea rows ="4" cols="30" id="observacion" placeholder="Añade aquí tus observaciones" th:value="${actividad.observacion}"></textarea>
         </div>
 
         <div class="botones-container">
-            <input type="submit" value="Añadir Actividad">
+            <input type="submit" value="Actualizar Actividad">
+            <input type="submit" value="Eliminar Actividad">
             <input id="botonCancelar" type="submit" value="Cancelar">
         </div>
     </form>
