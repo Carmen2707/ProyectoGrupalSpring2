@@ -13,37 +13,37 @@
         <div class="izquierda">
             <div class="input-container">
                 <label class="textolabel">DNI:</label>
-                <input class="input" th:value="${alumno.dni}" type="text">
+                <input class="input" th:value="${alumno.dni}" type="text" readonly>
             </div>
             <div class="input-container">
                 <label class="textolabel">Email:</label>
-                <input class="input" th:value="${alumno.email}" type="email">
+                <input class="input" th:value="${alumno.email}" type="email" readonly>
             </div>
             <div class="input-container">
                 <label class="textolabel">Telefono:</label>
-                <input class="input" th:value="${alumno.telefono}" type="text">
+                <input class="input" th:value="${alumno.telefono}" type="text" readonly>
             </div>
             <div class="input-container">
                 <label class="textolabel">Empresa:</label>
-                <input class="input" th:value="${alumno.empresa.getNombre()}" type="text">
+                <input class="input" th:value="${alumno.empresa.getNombre()}" type="text" readonly>
             </div>
         </div>
         <div class="derecha">
             <div class="input-container">
                 <label class="textolabel">Fecha de nacimiento:</label>
-                <input class="input" th:value="${#dates.format(alumno.nacimiento, 'yyyy-MM-dd')}" type="date">
+                <input class="input" th:value="${#dates.format(alumno.nacimiento, 'yyyy-MM-dd')}" type="date" readonly>
             </div>
             <div class="input-container">
                 <label class="textolabel">Profesor asignado:</label>
-                <input class="input" th:value="${alumno.tutor.getNombre()}" type="text">
+                <input class="input" th:value="${alumno.tutor.getNombre()}" type="text" readonly>
             </div>
             <div class="input-container">
                 <label class="textolabel">Total horas realizadas:</label>
-                <input class="input" th:value="${alumno.horasdual}" type="number">
+                <input class="input" th:value="${alumno.horasdual}" type="number" readonly>
             </div>
             <div class="input-container">
                 <label class="textolabel">Total horas restantes:</label>
-                <input class="input" th:value="700 - ${ alumno.horasdual}" type="number">
+                <input class="input" th:value="700 - ${ alumno.horasdual}" type="number" readonly>
             </div>
         </div>
     </div>
@@ -53,19 +53,19 @@
         <div class="infoempresa">
             <div class="input-container">
                 <label class="textolabel">Nombre:</label>
-                <input class="input" th:value="${alumno.empresa.nombre}" type="text">
+                <input class="input" th:value="${alumno.empresa.nombre}" type="text" readonly>
             </div>
             <div class="input-container">
                 <label class="textolabel">Responsable:</label>
-                <input class="input" th:value="${alumno.empresa.responsable}" type="text">
+                <input class="input" th:value="${alumno.empresa.responsable}" type="text" readonly>
             </div>
             <div class="input-container">
                 <label class="textolabel">Email:</label>
-                <input class="input" th:value="${alumno.empresa.email}" type="email">
+                <input class="input" th:value="${alumno.empresa.email}" type="email" readonly>
             </div>
             <div class="input-container">
                 <label class="textolabel">Teléfono:</label>
-                <input class="input" th:value="${alumno.empresa.telefono}" type="text">
+                <input class="input" th:value="${alumno.empresa.telefono}" type="text" readonly>
             </div>
         </div>
     </div>
@@ -95,7 +95,7 @@
                     <input type="hidden" name="horas" th:value="${actividad.horas}">
                     <input type="hidden" name="actividad" th:value="${actividad.actividad}">
                     <input type="hidden" name="observacion" th:value="${actividad.observacion}">
-                    <button class="buttonIS" type="submit">Editar</button>
+                    <button class="buttonEdit" type="submit">Editar</button>
                 </form>
             </td>
         </tr>

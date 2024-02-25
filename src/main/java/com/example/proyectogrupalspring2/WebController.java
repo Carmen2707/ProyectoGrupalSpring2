@@ -33,10 +33,6 @@ public class WebController {
     @Autowired //inicializar los componentes de sprint de forma automatica
     private ActividadRepository actividadRepository;
 
-    @Autowired //inicializar los componentes de sprint de forma automatica
-    private SecurityService securityService;
-
-
     /**
      * @param model el modelo utilizado para pasar datos a la vista
      * @return la vista de inicio de sesión, representada por el archivo HTML "login.html"
@@ -368,8 +364,6 @@ public class WebController {
             return "login";
         }
     }
-
-
 
     /**
      * Método que maneja las solicitudes GET para cerrar sesión.

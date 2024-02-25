@@ -23,13 +23,14 @@ body {
     padding: 20px;
     text-align: center;
     display: flex;
+    margin-top: -44px;
 }
 
 .footer{
     align-items: center;
     padding: 20px;
     text-align: center;
-    display: grid;
+    display: ruby;
 }
 
 .datos_personales {
@@ -168,7 +169,30 @@ body {
     color: red;
 }
 
+.buttonEdit {
+    padding: 10px 15px 10px 15px;
+    border: none;
+    font-size: 18px;
+    font-family: "Arial", sans-serif;
+    background-color: #1F58A1;
+    border-radius: 15px;
+    margin-bottom: 10px;
+    color: white;
+}
+
+.buttonEdit:hover {
+    padding: 10px 15px 10px 15px;
+    border: none;
+    font-size: 18px;
+    font-family: "Arial", sans-serif;
+    background-color: #4989de;
+    border-radius: 15px;
+    margin-bottom: 10px;
+    color: #1F58A1;
+}
+
 table {
+    border-collapse: collapse;
     width: 100%;
     margin-top: 20px;
     background-color: white;
@@ -176,6 +200,10 @@ table {
 }
 
 th, td {
-    border: 1px solid #ddd;
+    border: 1px solid #4989de;
     padding: 8px;
+    justify-items: center;
+    text-align: center;
+    font-size: 15px;
+    font-family: "Arial", sans-serif;
 }

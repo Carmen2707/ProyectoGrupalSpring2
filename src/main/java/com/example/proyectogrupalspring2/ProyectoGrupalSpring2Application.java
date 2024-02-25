@@ -11,7 +11,7 @@ public class ProyectoGrupalSpring2Application {
 
     public static void main(String[] args) {
         SpringApplication.run(ProyectoGrupalSpring2Application.class, args);
-     //   Utility.launchWeb();
+        Utility.launchWeb();
     }
 
 }
