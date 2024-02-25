@@ -1,21 +1,20 @@
 body {
     background-image: url("Login_Fondo.png");
     background-size: cover; /* Ajusta la imagen de fondo para que cubra toda la pantalla */
-    background-position: center; /* Centra la imagen de fondo */
     display: flex;
     justify-content: center; /* Centra horizontalmente */
     align-items: center; /* Centra verticalmente */
-    height: 100vh;
     margin: 0; /* Elimina el margen predeterminado del cuerpo */
     font-family: "Arial", sans-serif;
+    background-repeat: no-repeat;
+    overflow-y: hidden;
+    overflow-x: hidden;
 }
 
 .contenedor {
     width: 100%; /* Ancho máximo del formulario */
     margin: auto; /* Centra el formulario horizontalmente */
     padding: 100px;
-    border: 2px solid #ccc;
-    border-radius: 10px;
     justify-content: center; /* Centra horizontalmente los elementos dentro del contenedor */
     align-content: center;
     margin-left: 10px;
@@ -28,7 +27,8 @@ h1 {
     color: white;
 }
 label{
-    color: orange;
+    color: white;
+    font-size: 22px;
 }
 form {
     display: flex;
@@ -44,6 +44,7 @@ form {
 .form-group.columna1 {
     flex-basis: calc(50% - 20px); /* Establece el ancho de la columna 1 */
     margin-right: 10px; /* Espacio entre columnas */
+
 }
 
 .form-group.columna2 {
@@ -55,6 +56,9 @@ form {
     flex-basis: calc(50% - 20px); /* Establece el ancho de la columna 2 */
     margin-right: 60px; /* Espacio entre columnas */
     margin-top: 10px;
+    margin-left: 250px;
+    padding-right: 250px;
+
 
 }
 
@@ -64,37 +68,50 @@ form {
     font-size: 18px; /* Tamaño de fuente aumentado */
 }
 
-
-
 /* Estilo para los botones */
-input[type="submit"] {
-    padding: 20px;
-    width: 300PX;
-    margin-top: 100px;
-    margin-right: 90px;
+.buttonIS {
+    padding: 15px 55px 15px 55px;
+    border: none;
+    font-size: 18px;
+    font-family: "Arial", sans-serif;
     background-color: #1F58A1;
     border-radius: 15px;
-    margin-bottom: 10px;
     color: white;
-    font-size: 20px;
+    margin-left: 7px;
+    margin-top: 100px;
+}
+
+.buttonIS:hover {
+    padding: 15px 55px 15px 55px;
+    border: none;
+    font-size: 18px;
+    font-family: "Arial", sans-serif;
+    background-color: white;
+    border-radius: 15px;
+    color: #1F58A1;
 }
 
 /* Estilo para el segundo botón */
-#botonCancelar {
-    width: 250px; /* Ajusta el ancho del botón al 50% */
+.buttonCancel {
+    padding: 15px 25px 15px 25px;
+    border: none;
+    font-size: 18px;
+    font-family: "Arial", sans-serif;
     background-color: red;
-    color: white;
     border-radius: 15px;
-    margin-bottom: 10px;
-    margin-top: 20px;
-}
-#botonCancelar:hover{
-    background-color: #cc3434;
+    margin-top: 10px;
+    color: white;
+
 }
 
-
-input[type="submit"]:hover {
-    background-color: #5a84c9;
+.buttonCancel:hover {
+    padding: 15px 25px 15px 25px;
+    border: none;
+    font-size: 18px;
+    font-family: "Arial", sans-serif;
+    background-color: white;
+    border-radius: 15px;
+    color: red;
 }
 
 input[type="number"],
@@ -109,7 +126,7 @@ select {
     box-sizing: border-box;
 }
 #actividad{
-    width: 738px; /* Ajusta el ancho al 95% del contenedor padre */
+    width: 863px; /* Ajusta el ancho al 95% del contenedor padre */
     padding: 10px; /* Aumenta el relleno para hacer los campos más grandes */
     font-size: 20px; /* Ajusta el tamaño de la fuente */
     border: 1px solid #ccc;

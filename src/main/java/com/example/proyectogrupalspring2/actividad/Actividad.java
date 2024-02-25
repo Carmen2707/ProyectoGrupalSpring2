@@ -28,4 +28,20 @@ public class Actividad {
     @JoinColumn(name = "alumno", referencedColumnName = "idalumno")
     private Alumno alumno;
 
+    public String getFechaString() {
+        // Convierte la fecha a una cadena en el formato deseado
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        return dateFormat.format(this.fecha);
+    }
+
+    public void setFechaString(String fechaString) {
+        // Convierte la cadena de fecha al objeto Date y establece la fecha
+        try {
+            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+            this.fecha = dateFormat.parse(fechaString);
+        } catch (ParseException e) {
+            // Manejar cualquier error de parseo de fecha aquí
+            e.printStackTrace();
+        }
+    }
 }

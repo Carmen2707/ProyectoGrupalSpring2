@@ -9,7 +9,7 @@
 <div class="contenedor">
     <h1>Añadir Actividad</h1>
 
-    <form action="/nuevaact" method="post">
+    <form th:action="'/nuevaAct/'+ ${idAlumno}" method="POST">
         <div class="form-group columna1">
             <label class="label-group" for="fecha">Fecha:</label>
             <input type="date" id="fecha" name="fecha" required>
@@ -26,18 +26,20 @@
             </select>
         </div>
         <div class="form-group columna2">
-            <label class="label-group" for="actividad">Actividad realizada:</label>
-            <textarea rows ="4" cols="30" id="actividad" placeholder="Añadir aquí sus actividad realizada"></textarea>
+            <label class="label-group" for="actividad" >Actividad realizada:</label>
+            <textarea rows ="4" cols="30" id="actividad" name="actividad" placeholder="Añadir aquí sus actividad realizada"></textarea>
         </div>
         <div class="form-group columna4">
             <label class="label-group" for="observacion">Observación:</label>
-            <textarea rows ="4" cols="30" id="observacion"placeholder="Añade aquí tus observaciones"></textarea>
-        </div>
+            <textarea rows ="4" cols="30" id="observacion" name="observacion" placeholder="Añade aquí tus observaciones"></textarea>
+        </div><br><br>
 
         <div class="botones-container">
-            <input type="submit" value="Añadir Actividad">
-            <input id="botonCancelar" type="submit" value="Cancelar">
+            <input class="buttonIS" type="submit" value="Añadir Actividad">
         </div>
+    </form>
+    <form th:action="'/irAlum/' + ${idAlumno}" method="get">
+        <input class="buttonCancel" type="submit" value="Cancelar"/>
     </form>
 </div>
 </body>

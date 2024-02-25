@@ -15,13 +15,13 @@ public class AlumnoController {
     private AlumnoRepository alumnoRepository;
 
 
-    @GetMapping("/añadirAct")
+    /*@GetMapping("/añadirAct")
     public String añadirActividad(@PathVariable Long id, Model model) {
         if (alumnoRepository.existsById(id)) {
             model.addAttribute("alumno", alumnoRepository.findById(id).get());
             return "redirect:/nuevaAct";
         }
         return "redirect:/nuevaAct";
-    }
+    }*/
 
 }

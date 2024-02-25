@@ -5,6 +5,7 @@ body {
     height: 100vh;
     margin: 0;
     font-family: "Arial", sans-serif;
+    overflow: hidden;
 
 }
 
@@ -97,6 +98,7 @@ body {
 .content {
     flex-grow: 1;
     padding: 20px;
+    /*margin-right: 196px;*/
 }
 
 .content input {
@@ -135,7 +137,7 @@ body {
 }
 
 .buttonIS:hover {
-    padding: 15px 25px 15px 25px;
+    padding: 15px 55px 15px 55px;
     border: none;
     font-size: 18px;
     font-family: "Arial", sans-serif;
