@@ -335,8 +335,8 @@ public class WebController {
                 return "redirect:/detalleActividad/" + idActividad;
             }
         } else {
-            // Si no hay un alumno en sesión, redirige a la página de inicio de sesión
-            return "login";
+        // Si no hay un alumno en sesión, redirige a la página de inicio de sesión
+        return "login";
         }
     }
 
@@ -359,8 +359,6 @@ public class WebController {
             Optional<Actividad> actividadOptional = actividadRepository.findById(idActividad);
             // Verifica si la actividad existe
             if (actividadOptional.isPresent()) {
-                // Elimina la actividad de la base de datos
-                //actividadRepository.delete(actividadOptional.get());
                 actividadRepository.delete(actividadOptional.get());
             }
             // Redirige a la página del alumno después de eliminar la actividad
@@ -370,6 +368,7 @@ public class WebController {
             return "login";
         }
     }
+
 
 
     /**

@@ -78,6 +78,7 @@
             <th>Horas de el día</th>
             <th>Actividades realizada</th>
             <th>Observaciones</th>
+            <th></th>
         </tr>
         <!-- Iterar sobre la lista de actividades y mostrar cada una en una fila de la tabla -->
         <tr th:each="actividad : ${actividades}">
@@ -94,7 +95,7 @@
                     <input type="hidden" name="horas" th:value="${actividad.horas}">
                     <input type="hidden" name="actividad" th:value="${actividad.actividad}">
                     <input type="hidden" name="observacion" th:value="${actividad.observacion}">
-                    <button class="" type="submit">Editar</button>
+                    <button class="buttonIS" type="submit">Editar</button>
                 </form>
             </td>
         </tr>
