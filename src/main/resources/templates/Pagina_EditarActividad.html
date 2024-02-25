@@ -37,8 +37,11 @@
 
         <div class="botones-container">
             <input type="submit" value="Actualizar Actividad">
-            <input type="submit" value="Eliminar Actividad">
         </div>
+
+    </form>
+    <form th:action="'/eliminar/' + ${idActividad}" method="post">
+        <input type="submit" value="Eliminar Actividad"/>
     </form>
 
     <form th:action="'/irAlum/' + ${idAlumno}" method="get">

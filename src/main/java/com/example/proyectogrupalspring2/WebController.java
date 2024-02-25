@@ -269,6 +269,29 @@ public class WebController {
     }
 
     //TODO - DELETE PARA EDITAR ACTIVIDAD
+    @PostMapping("/eliminar/{idActividad}")
+    public String eliminaActividad(@PathVariable Long idActividad, HttpServletRequest request) {
+        // Obtén la sesión actual del usuario
+        HttpSession session = request.getSession();
+        // Verifica si hay un alumno en sesión
+        Alumno alumnoSession = (Alumno) session.getAttribute("alumno");
+
+        if (alumnoSession != null) { // Si hay un alumno en sesión
+            // Busca la actividad en la base de datos por su ID
+            Optional<Actividad> actividadOptional = actividadRepository.findById(idActividad);
+            // Verifica si la actividad existe
+            if (actividadOptional.isPresent()) {
+                // Elimina la actividad de la base de datos
+                //actividadRepository.delete(actividadOptional.get());
+                actividadRepository.delete(actividadOptional.get());
+            }
+            // Redirige a la página del alumno después de eliminar la actividad
+            return "redirect:/irAlum/" + alumnoSession.getIdalumno();
+        } else {
+            // Si no hay un alumno en sesión, redirige a la página de inicio de sesión
+            return "login";
+        }
+    }
 
 
     /**
