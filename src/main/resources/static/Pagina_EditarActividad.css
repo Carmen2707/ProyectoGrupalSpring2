@@ -22,7 +22,7 @@ body {
     margin-right: 10px;
 }
 .botones-container{
-    margin-top: -60px;
+    margin-top: -7px;
 }
 
 h1 {
@@ -73,8 +73,8 @@ form {
 input[type="submit"] {
     padding: 20px;
     width: 300PX;
-    margin-top: 100px;
-    margin-right: 90px;
+    margin-top: 36px;
+    margin-right: 53px;
     background-color: #1F58A1;
     border-radius: 15px;
     margin-bottom: 10px;
