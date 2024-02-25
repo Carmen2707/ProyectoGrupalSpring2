@@ -81,11 +81,12 @@
         </tr>
         <!-- Iterar sobre la lista de actividades y mostrar cada una en una fila de la tabla -->
         <tr th:each="actividad : ${actividades}">
-            <td th:text="${actividad.fecha}">Fecha de la actividad</td>
-            <td th:text="${actividad.tipo}">Tipo de práctica</td>
-            <td th:text="${actividad.horas}">Horas de la actividad</td>
-            <td th:text="${actividad.actividad}">Descripción de la actividad</td>
-            <td th:text="${actividad.observacion}">Observaciones</td>
+            <td class="fecha" th:text="${actividad.fecha}">Fecha de la actividad</td>
+            <td class="tipo" th:text="${actividad.tipo}">Tipo de práctica</td>
+            <td class="horas" th:text="${actividad.horas}">Horas de la actividad</td>
+            <td class="actividad" th:text="${actividad.actividad}">Descripción de la actividad</td>
+            <td class="observaciones" th:text="${actividad.observacion}">Observaciones</td>
+            <td><a th:href="@{'/detalleActividad?fecha=' + ${actividad.fecha} + '&tipo=' + ${actividad.tipo} + '&horas=' + ${actividad.horas} + '&actividad=' + ${actividad.actividad} + '&observacion=' + ${actividad.observacion}}">Editar</a></td>
         </tr>
     </table>
 </div>
