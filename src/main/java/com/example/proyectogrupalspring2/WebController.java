@@ -1,6 +1,5 @@
 package com.example.proyectogrupalspring2;
 
-
 import com.example.proyectogrupalspring2.actividad.Actividad;
 import com.example.proyectogrupalspring2.actividad.ActividadRepository;
 import com.example.proyectogrupalspring2.alumno.Alumno;
@@ -20,7 +19,11 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
-
+/**
+ * Controlador web que gestiona las solicitudes relacionadas con la aplicación de gestión de actividades para alumnos.
+ * Este controlador maneja las operaciones de inicio de sesión, visualización de actividades, añadir actividad,
+ * editar actividad, eliminar actividad y cerrar sesión.
+ */
 @Controller
 @RequestMapping("/")
 public class WebController {
@@ -44,6 +47,13 @@ public class WebController {
         return "login"; //Redirige al html login.html
     }
 
+    /**
+     * Método que verifica las credenciales del alumno y redirige a la página de alumno correspondiente si las credenciales son válidas.
+     *
+     * @param alumno  el objeto Alumno que contiene las credenciales proporcionadas por el usuario
+     * @param request la solicitud HTTP
+     * @return la página del alumno correspondiente si las credenciales son válidas; de lo contrario, redirige de vuelta a la página de inicio de sesión
+     */
     @GetMapping("/alumCorrect")
     public String verificarAlumno(@ModelAttribute Alumno alumno, HttpServletRequest request) {
         Boolean existencia = alumnoRepository.existsAlumnoByEmail(alumno.getEmail());
@@ -62,6 +72,14 @@ public class WebController {
         }
     }
 
+    /**
+     * Método que muestra la página del alumno con sus actividades.
+     *
+     * @param idAlumno el ID del alumno cuya página se va a mostrar
+     * @param model    el modelo utilizado para pasar datos a la vista
+     * @param request  la solicitud HTTP
+     * @return la vista de la página del alumno con sus actividades
+     */
     @GetMapping("/irAlum/{idAlumno}")
     public String irPaginaAlumno(@PathVariable Long idAlumno, Model model, HttpServletRequest request) {
         HttpSession session = request.getSession();
@@ -80,7 +98,13 @@ public class WebController {
         }
     }
 
-    //GET PARA MOSTRAR LAS ACTIVIDADES
+    /**
+     * Método que muestra las actividades del alumno.
+     *
+     * @param model   el modelo utilizado para pasar datos a la vista
+     * @param request la solicitud HTTP
+     * @return la vista de las actividades del alumno
+     */
     @GetMapping("/actividades")
     public String mostrarActividades(Model model, HttpServletRequest request) {
         HttpSession session = request.getSession();
@@ -104,7 +128,18 @@ public class WebController {
     }
 
 
-    //POST PARA AÑADIR ACTIVIDAD
+    /**
+     * Método que añade una nueva actividad para un alumno.
+     *
+     * @param idAlumno   el ID del alumno al que se le va a añadir la actividad
+     * @param fecha      la fecha de la actividad
+     * @param horas      las horas dedicadas a la actividad
+     * @param tipo       el tipo de actividad
+     * @param actividad  la descripción de la actividad
+     * @param observacion la observación de la actividad
+     * @param request    la solicitud HTTP
+     * @return la página del alumno después de añadir la actividad
+     */
     @PostMapping("/nuevaAct/{idAlumno}")
     public String nuevaActividadPost(@PathVariable Long idAlumno, @RequestParam String fecha, @RequestParam Integer horas, @RequestParam String tipo, @RequestParam String actividad,
                                      @RequestParam String observacion, HttpServletRequest request) {
@@ -155,6 +190,13 @@ public class WebController {
         }
     }
 
+    /**
+     * Método que muestra la página para añadir una nueva actividad.
+     *
+     * @param model   el modelo utilizado para pasar datos a la vista
+     * @param request la solicitud HTTP
+     * @return la vista para añadir una nueva actividad
+     */
     @GetMapping("/irAña/{idAlumno}")
     public String irPaginaAñadirActividad(Model model, HttpServletRequest request) {
         HttpSession session = request.getSession();
@@ -169,7 +211,13 @@ public class WebController {
         }
     }
 
-    //GET PARA AÑADIR ACTIVIDAD
+    /**
+     * Método que muestra la página para añadir una nueva actividad.
+     *
+     * @param model   el modelo utilizado para pasar datos a la vista
+     * @param request la solicitud HTTP
+     * @return la vista para añadir una nueva actividad
+     */
     @GetMapping("/nuevaact")
     public String nuevaActividadGet(Model model, HttpServletRequest request) {
         Actividad actividad = new Actividad();
@@ -188,7 +236,19 @@ public class WebController {
     }
 
 
-    //TODO - PUT PARA EDITAR ACTIVIDAD
+    /**
+     * Método que muestra la página para editar una actividad.
+     *
+     * @param idActividad el ID de la actividad que se va a editar
+     * @param idAlumno    el ID del alumno al que pertenece la actividad
+     * @param fecha       la fecha de la actividad
+     * @param tipo        el tipo de actividad
+     * @param horas       las horas dedicadas a la actividad
+     * @param actividad   la descripción de la actividad
+     * @param observacion la observación de la actividad
+     * @param model       el modelo utilizado para pasar datos a la vista
+     * @return la vista para editar la actividad
+     */
     @GetMapping("/detalleActividad/{idActividad}")
     public String mostrarDetalleActividad(@PathVariable("idActividad") String idActividad,
                                           @RequestParam("idAlumno") Long idAlumno,
@@ -211,6 +271,18 @@ public class WebController {
         return "Pagina_EditarActividad";
     }
 
+    /**
+     * Método que edita una actividad existente.
+     *
+     * @param idActividad el ID de la actividad que se va a editar
+     * @param fecha       la fecha de la actividad
+     * @param horas       las horas dedicadas a la actividad
+     * @param tipo        el tipo de actividad
+     * @param actividad   la descripción de la actividad
+     * @param observacion la observación de la actividad
+     * @param request     la solicitud HTTP
+     * @return la página del alumno después de editar la actividad
+     */
     @PostMapping("/editar/{idActividad}")
     public String editActivityPost(@PathVariable Long idActividad, @RequestParam String fecha, @RequestParam Integer horas,
                                    @RequestParam String tipo, @RequestParam String actividad, @RequestParam String observacion,
@@ -268,10 +340,16 @@ public class WebController {
         }
     }
 
-    //TODO - DELETE PARA EDITAR ACTIVIDAD
+    /**
+     * Método que elimina una actividad existente.
+     *
+     * @param idActividad el ID de la actividad que se va a eliminar
+     * @param request     la solicitud HTTP
+     * @return la página del alumno después de eliminar la actividad
+     */
     @PostMapping("/eliminar/{idActividad}")
     public String eliminaActividad(@PathVariable Long idActividad, HttpServletRequest request) {
-        // Obtén la sesión actual del usuario
+        // Obtenemos la sesion del usuario
         HttpSession session = request.getSession();
         // Verifica si hay un alumno en sesión
         Alumno alumnoSession = (Alumno) session.getAttribute("alumno");
@@ -288,7 +366,7 @@ public class WebController {
             // Redirige a la página del alumno después de eliminar la actividad
             return "redirect:/irAlum/" + alumnoSession.getIdalumno();
         } else {
-            // Si no hay un alumno en sesión, redirige a la página de inicio de sesión
+            // Si no hay un alumno en sesión, redirige a la página de login
             return "login";
         }
     }
