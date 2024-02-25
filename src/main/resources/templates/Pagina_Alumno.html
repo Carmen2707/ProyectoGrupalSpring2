@@ -31,7 +31,7 @@
         <div class="derecha">
             <div class="input-container">
                 <label class="textolabel">Fecha de nacimiento:</label>
-                <input class="input" th:value="${alumno.nacimiento}" type="date">
+                <input class="input" th:value="${#dates.format(alumno.nacimiento, 'yyyy-MM-dd')}" type="date">
             </div>
             <div class="input-container">
                 <label class="textolabel">Profesor asignado:</label>
@@ -90,13 +90,12 @@
     </table>
 </div>
 <div class="footer">
-    <form action="/nuevaact" method="get">
+    <form th:action="'/irAña/' + ${idAlumno}" method="get">
         <button class="buttonIS" type="submit">Añadir</button>
     </form>
     <form action="/logout" method="get">
         <button class="buttonCS" type="submit">Cerrar Sesión</button>
     </form>
-
 
 </div>
 </body>
