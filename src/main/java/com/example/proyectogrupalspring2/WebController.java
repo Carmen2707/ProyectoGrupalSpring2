@@ -19,6 +19,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 @Controller
 @RequestMapping("/")
@@ -210,42 +211,62 @@ public class WebController {
         return "Pagina_EditarActividad";
     }
 
-    @PutMapping("/editar/{idActividad}")
-    public String editActivityPost(@PathVariable Long idActividad, @RequestParam String fecha, @RequestParam Integer horas, @RequestParam String tipo,
-                                   @RequestParam String observacion, @ModelAttribute Actividad actividad, HttpServletRequest request) {
-        HttpSession sesion = request.getSession();
-        Alumno alumno = (Alumno) sesion.getAttribute("alumno");
-        if (alumno != null && !actividad.getActividad().equals("") && actividad.getFecha() != null && actividad.getHoras() != null && actividad.getTipo() != null) {
-            // Crea un formato de fecha para convertir la cadena de fecha en un objeto Date
-            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-            Date fechaDate;
-            try {
-                // Convierte la cadena de fecha en un objeto Date
-                fechaDate = dateFormat.parse(fecha);
-            } catch (ParseException e) {
-                // Maneja la excepción en caso de error al analizar la fecha
-                e.printStackTrace();
-                // Redirige de vuelta a la página de añadir actividad si hay un error en la fecha
-                return "redirect:/irAña/" + alumno.getIdalumno();
+    @PostMapping("/editar/{idActividad}")
+    public String editActivityPost(@PathVariable Long idActividad, @RequestParam String fecha, @RequestParam Integer horas,
+                                   @RequestParam String tipo, @RequestParam String actividad, @RequestParam String observacion,
+                                   HttpServletRequest request) {
+        // Obtiene la sesión actual del usuario
+        HttpSession session = request.getSession();
+        // Verifica si hay un alumno en sesión
+        Alumno alumnoSession = (Alumno) session.getAttribute("alumno");
+
+        if (alumnoSession != null) { // Si hay un alumno en sesión
+            // Busca la actividad en la base de datos por su ID
+            Actividad actividadExistente = actividadRepository.findById(idActividad).orElse(null);
+
+            // Verifica si la actividad existe
+            if (actividadExistente != null) {
+                // Verifica que los datos de la actividad no estén vacíos
+                if (fecha != null && !fecha.isEmpty() && tipo != null && !tipo.isEmpty() && actividad != null && !actividad.isEmpty() && observacion != null) {
+
+                    // Crea un formato de fecha para convertir la cadena de fecha en un objeto Date
+                    SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+                    Date fechaDate;
+                    try {
+                        // Convierte la cadena de fecha en un objeto Date
+                        fechaDate = dateFormat.parse(fecha);
+                    } catch (ParseException e) {
+                        // Maneja la excepción en caso de error al analizar la fecha
+                        e.printStackTrace();
+                        // Redirige de vuelta a la página de añadir actividad si hay un error en la fecha
+                        return "redirect:/detalleActividad/" + idActividad;
+                    }
+
+                    // Establece los nuevos valores para la actividad existente
+                    actividadExistente.setFecha(fechaDate);
+                    actividadExistente.setHoras(horas);
+                    actividadExistente.setTipo(tipo);
+                    actividadExistente.setActividad(actividad);
+                    actividadExistente.setObservacion(observacion);
+
+                    // Guarda la actividad actualizada en la base de datos
+                    actividadRepository.save(actividadExistente);
+
+                    // Redirige a la página del alumno después de guardar la actividad
+                    return "redirect:/irAlum/" + alumnoSession.getIdalumno();
+                } else {
+                    // Redirige de vuelta a la página de detalle de actividad si faltan datos
+                    return "redirect:/detalleActividad/" + idActividad;
+                }
+            } else {
+                // Si no se encuentra la actividad, redirige a la página de detalle de actividad
+                return "redirect:/detalleActividad/" + idActividad;
             }
-
-
-            actividad.setFecha(fechaDate);
-            actividad.setHoras(horas);
-            actividad.setTipo(tipo);
-            actividad.setActividad(actividad.getActividad());
-            actividad.setObservacion(observacion);
-            actividad.setAlumno(alumno);
-
-            // Guarda la nueva actividad en la base de datos
-            actividadRepository.save(actividad);
-
-        }
+        } else {
             // Si no hay un alumno en sesión, redirige a la página de inicio de sesión
             return "login";
-
+        }
     }
-
 
     //TODO - DELETE PARA EDITAR ACTIVIDAD
 
