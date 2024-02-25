@@ -86,7 +86,17 @@
             <td class="horas" th:text="${actividad.horas}">Horas de la actividad</td>
             <td class="actividad" th:text="${actividad.actividad}">Descripción de la actividad</td>
             <td class="observaciones" th:text="${actividad.observacion}">Observaciones</td>
-            <td><a th:href="@{'/detalleActividad?fecha=' + ${actividad.fecha} + '&tipo=' + ${actividad.tipo} + '&horas=' + ${actividad.horas} + '&actividad=' + ${actividad.actividad} + '&observacion=' + ${actividad.observacion}}">Editar</a></td>
+            <td>
+                <form th:action="'/detalleActividad/'+ ${actividad.idactividad}" method="get">
+                    <input type="hidden" name="idAlumno" th:value="${idAlumno}">
+                    <input type="hidden" name="fecha" th:value="${#dates.format(actividad.getFecha(), 'yyyy-MM-dd')}">
+                    <input type="hidden" name="tipo" th:value="${actividad.getTipo()}">
+                    <input type="hidden" name="horas" th:value="${actividad.getHoras()}">
+                    <input type="hidden" name="actividad" th:value="${actividad.actividad}">
+                    <input type="hidden" name="observacion" th:value="${actividad.observacion}">
+                    <button type="submit">Editar</button>
+                </form>
+            </td>
         </tr>
     </table>
 </div>

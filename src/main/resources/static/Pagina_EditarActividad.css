@@ -5,21 +5,24 @@ body {
     display: flex;
     justify-content: center; /* Centra horizontalmente */
     align-items: center; /* Centra verticalmente */
-    height: 100vh;
     margin: 0; /* Elimina el margen predeterminado del cuerpo */
     font-family: "Arial", sans-serif;
+    background-repeat: no-repeat;
+    overflow-y: hidden;
+    overflow-x: hidden;
 }
 
 .contenedor {
     width: 100%; /* Ancho máximo del formulario */
     margin: auto; /* Centra el formulario horizontalmente */
     padding: 100px;
-    border: 2px solid #ccc;
-    border-radius: 10px;
     justify-content: center; /* Centra horizontalmente los elementos dentro del contenedor */
     align-content: center;
     margin-left: 10px;
     margin-right: 10px;
+}
+.botones-container{
+    margin-top: -60px;
 }
 
 h1 {

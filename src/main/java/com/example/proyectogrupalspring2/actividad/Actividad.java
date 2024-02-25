@@ -27,4 +27,6 @@ public class Actividad {
     @ManyToOne
     @JoinColumn(name = "alumno", referencedColumnName = "idalumno")
     private Alumno alumno;
+
+
 }

@@ -10,6 +10,7 @@ import jakarta.servlet.http.HttpSession;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -87,6 +88,11 @@ public class WebController {
         if (alumnoSession != null) {
             Alumno alumno = alumnoSession;
             List<Actividad> actividades = actividadRepository.getAllByIdAlumno(alumno);
+
+            if (!actividades.isEmpty()) {
+                Long idActividad = actividades.get(0).getIdactividad();
+                model.addAttribute("idActividad", idActividad);
+            }
 
             model.addAttribute("alumno", alumno);
             model.addAttribute("actividades", actividades);
@@ -182,14 +188,18 @@ public class WebController {
 
 
     //TODO - PUT PARA EDITAR ACTIVIDAD
-    @GetMapping("/detalleActividad")
-    public String mostrarDetalleActividad(@RequestParam("fecha") String fecha,
+    @GetMapping("/detalleActividad/{idActividad}")
+    public String mostrarDetalleActividad(@PathVariable("idActividad") String idActividad,
+                                          @RequestParam("idAlumno") Long idAlumno,
+                                          @RequestParam("fecha") @DateTimeFormat(pattern = "yyyy-MM-dd") Date fecha,
                                           @RequestParam("tipo") String tipo,
-                                          @RequestParam("horas") String horas,
+                                          @RequestParam("horas") Integer horas,
                                           @RequestParam("actividad") String actividad,
                                           @RequestParam("observacion") String observacion,
                                           Model model) {
         // Puedes pasar los datos recuperados del parámetro de consulta al modelo
+        model.addAttribute("idActividad", idActividad);
+        model.addAttribute("idAlumno", idAlumno);
         model.addAttribute("fecha", fecha);
         model.addAttribute("tipo", tipo);
         model.addAttribute("horas", horas);
@@ -200,7 +210,7 @@ public class WebController {
         return "Pagina_EditarActividad";
     }
 
-    @PostMapping("/editar/{idActividad}")
+    @PutMapping("/editar/{idActividad}")
     public String editActivityPost(@PathVariable Long idActividad, @RequestParam String fecha, @RequestParam Integer horas, @RequestParam String tipo,
                                    @RequestParam String observacion, @ModelAttribute Actividad actividad, HttpServletRequest request) {
         HttpSession sesion = request.getSession();
