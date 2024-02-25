@@ -9,7 +9,7 @@
 <div class="contenedor">
     <h1>Editar Actividad</h1>
 
-    <form action="'/editar/'+ ${idActividad}" method="post">
+    <form th:action="'/editar/'+ ${idActividad}" method="post">
         <div class="form-group columna1">
             <label class="label-group" for="fecha">Fecha:</label>
             <input type="date" th:value="${fecha}" id="fecha" name="fecha" required>
